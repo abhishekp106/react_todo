@@ -1,23 +1,40 @@
-import React from 'react'
+import React from 'react';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import { Grid } from '@material-ui/core';
 
 const List = props => (
-    <ul>
+    <Grid container direction="column" justify="center" alignItems="center">
         {
-            props.items.map((item, index) => {
-            <div>
-                {item}
-                <div className="btn-group">
-                    <button type="button" className="btn">
-                        Edit <span className="visually-hidden">Repeat</span>
-                    </button>
-                    <button type="button" className="btn btn__danger">
-                        Delete <span className="visually-hidden">Repeat</span>
-                    </button>
-                </div>
-            </div>
-            }
+            props.items.map((item, index) => 
+                (
+                <Card item xs={12}>
+                    {item}
+                    <ButtonGroup size="small" aria-labels="small outlined button group">
+                        <Button>Edit</Button>
+                        <Button onClick={() => props.delete(item)}>Delete</Button>
+                    </ButtonGroup>
+                </Card>
+                )
+            )
         }
-    </ul>
+    </Grid>
 );
 
+// onClick={() => this.props.delete(this.props.item)}
+// <Grid direction="column" justify="center" alignItems="center" >
+//     {
+//             props.items.map((item, index) => (
+//                 <Card item xs={12}>
+//                     {item}
+//                     <ButtonGroup size="small" aria-label="small outlined button group">
+//                         <Button>Edit</Button>
+//                         <Button>Delete</Button>
+//                     </ButtonGroup>
+//                 </Card>
+//                 )
+//             )
+//     }
+//     </Grid>
 export default List;
